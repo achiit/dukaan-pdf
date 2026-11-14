@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PDF Library</title><meta name="description" content="Discover, read and download useful PDF resources in one place.">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f6f1e9;--card:#fffdf9;--g:#1f3a2d;--gold:#b8a27a;--tx:#2a2a26;--mu:#6f6b60;--ln:#e6dfd2;--bg2:#efe7d8}
+@media(prefers-color-scheme:dark){:root{--bg:#161a17;--card:#1f2521;--g:#d9e6dc;--gold:#b8a27a;--tx:#ece8de;--mu:#a09b8e;--ln:#2e362f;--bg2:#222a24}}
+:root[data-theme=dark]{--bg:#161a17;--card:#1f2521;--g:#d9e6dc;--tx:#ece8de;--mu:#a09b8e;--ln:#2e362f;--bg2:#222a24}:root[data-theme=light]{--bg:#f6f1e9;--card:#fffdf9;--g:#1f3a2d;--tx:#2a2a26;--mu:#6f6b60;--ln:#e6dfd2;--bg2:#efe7d8}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--tx);font:15px Jost,sans-serif}
+a{color:inherit;text-decoration:none}h1,h2,h3,.serif{font-family:'Cormorant Garamond',serif;font-weight:600;margin:0}
+.top{background:#1f3a2d;color:#fff;display:flex;justify-content:center;gap:40px;padding:9px;font-size:12px;flex-wrap:wrap}
+nav{display:flex;align-items:center;justify-content:space-between;padding:18px 5vw;gap:16px;flex-wrap:wrap}
+.logo{font-family:'Cormorant Garamond';font-size:26px;letter-spacing:.14em;display:flex;gap:10px;align-items:center}
+.logo i{width:34px;height:34px;background:var(--g);color:var(--bg);display:grid;place-items:center;border-radius:6px;font-style:normal;font-size:20px}
+nav .l{display:flex;gap:26px;font-size:13px;font-weight:500;flex-wrap:wrap}
+.btn{background:var(--g);color:var(--bg);border:0;border-radius:10px;padding:12px 22px;font:500 14px Jost;cursor:pointer;display:inline-block}
+.btn.o{background:transparent;color:var(--g);border:1px solid var(--g)}.btn.s{padding:8px 14px;font-size:13px}
+button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+.wrap{padding:0 5vw 40px;max-width:1300px;margin:auto}
+.hero{display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;padding:40px 0;position:relative}
+.hero h1{font-size:clamp(44px,6vw,76px);line-height:1}.hero h1 em{display:block;color:#3d5a45;font-weight:500}
+.hero p{color:var(--mu);max-width:380px;line-height:1.6}
+.shelf{position:relative;min-height:340px;display:flex;align-items:flex-end;justify-content:center;gap:6px}
+.shelf:before{content:"";position:absolute;inset:0 10% 0 10%;background:var(--bg2);border-radius:50% 50% 0 0}
+.spine{position:relative;width:62px;border-radius:3px 3px 0 0;padding:14px 6px;writing-mode:vertical-rl;font-family:'Cormorant Garamond';font-size:20px;letter-spacing:.12em;text-align:center;box-shadow:2px 0 8px #0002}
+.perks{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap;font-size:12px;color:var(--mu)}.perks b{display:block;color:var(--tx);font-size:13px}
+.panel{background:var(--card);border-radius:20px;padding:22px;box-shadow:0 8px 30px #0001;margin:18px 0}
+.sh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:16px}.sh h2{font-size:26px}
+.cats{display:flex;gap:22px;overflow-x:auto;padding-bottom:6px}
+.cat{text-align:center;min-width:104px;cursor:pointer;font-size:13px;font-weight:500}.cat span{display:grid;place-items:center;width:84px;height:84px;margin:0 auto 8px;border-radius:50%;background:var(--bg2);font:600 34px 'Cormorant Garamond';color:var(--g)}
+.cat.on span{background:var(--g);color:var(--bg)}
+.banner{background:var(--g);color:#fff;border-radius:18px;padding:36px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin:22px 0}
+.banner h2{font-size:40px}.banner .btn{background:var(--gold);color:#1f3a2d}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:16px}.list .grid{grid-template-columns:1fr}
+.card{background:var(--card);border-radius:14px;overflow:hidden;box-shadow:0 2px 10px #0001;display:flex;flex-direction:column}
+.cov{aspect-ratio:3/4;background:var(--bg2) center/cover;display:grid;place-items:center;font:600 28px 'Cormorant Garamond';color:var(--g);padding:10px;text-align:center}
+.card .b{padding:12px;display:flex;flex-direction:column;gap:4px;flex:1}.card h3{font-size:19px;line-height:1.15}.mu{color:var(--mu);font-size:12.5px}
+.row{display:flex;gap:8px;margin-top:auto;padding-top:8px}
+.tool{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:16px}
+input,select,textarea{background:var(--card);color:var(--tx);border:1px solid var(--ln);border-radius:10px;padding:11px 14px;font:inherit;width:100%}
+.tool input{flex:1;min-width:200px;width:auto}.tool select{width:auto}
+.form{display:grid;gap:12px;max-width:640px}.form label{font-size:13px;font-weight:500;display:grid;gap:5px}
+.tbl{width:100%;border-collapse:collapse}.tbl td,.tbl th{padding:10px;border-bottom:1px solid var(--ln);text-align:left;font-size:13.5px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin-bottom:16px}.stats div{background:var(--card);border-radius:14px;padding:16px}.stats b{font:600 32px 'Cormorant Garamond';display:block}
+.strip{display:flex;justify-content:space-around;gap:20px;flex-wrap:wrap;padding:24px 0;color:var(--mu);font-size:13px}
+footer{border-top:1px solid var(--ln);padding:30px 5vw;display:flex;justify-content:space-between;flex-wrap:wrap;gap:20px;color:var(--mu);font-size:13px}
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--g);color:var(--bg);padding:12px 20px;border-radius:10px;display:none;z-index:9;max-width:90vw}
+.detail{display:grid;grid-template-columns:minmax(200px,320px) 1fr;gap:34px}.detail h1{font-size:46px}
+iframe{width:100%;height:82vh;border:0;border-radius:12px;background:#fff}
+@media(max-width:760px){.hero,.detail{grid-template-columns:1fr}.shelf{min-height:240px}nav .l{gap:14px}}
+@media(prefers-reduced-motion:no-preference){.card{transition:transform .2s}.card:hover{transform:translateY(-3px)}}
+</style></head><body>
+<div class="top"><span>Free to read</span><span>Download any PDF</span><span>New titles added regularly</span></div>
+<div id="app"></div><div id="toast" role="status"></div>
+<script type="module">
+// ======= PUT YOUR FIREBASE CONFIG HERE (Project settings > Your apps > Web) =======
+const FIREBASE_CONFIG = {apiKey:"YOUR_API_KEY",authDomain:"YOUR_PROJECT.firebaseapp.com",projectId:"YOUR_PROJECT",storageBucket:"YOUR_PROJECT.appspot.com",messagingSenderId:"000000000000",appId:"YOUR_APP_ID"};
+// ==================================================================================
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,onAuthStateChanged,signInWithPopup,GoogleAuthProvider,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getFirestore,collection,doc,getDoc,getDocs,setDoc,addDoc,updateDoc,deleteDoc,query,where,limit,serverTimestamp,increment} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getStorage,ref,uploadBytesResumable,getDownloadURL,deleteObject} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-storage.js";
+try{const t=localStorage.getItem("th");if(t)document.documentElement.dataset.theme=t}catch(e){}
+const app=initializeApp(FIREBASE_CONFIG),auth=getAuth(app),db=getFirestore(app),st=getStorage(app);
+const $=s=>document.querySelector(s),A=$("#app");
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const toast=m=>{const t=$("#toast");t.textContent=m;t.style.display="block";setTimeout(()=>t.style.display="none",3800)};
+function seo(t,d,img){const m=(k,v,a="name")=>{let e=document.querySelector(`meta[${a}="${k}"]`);if(!e){e=document.createElement("meta");e.setAttribute(a,k);document.head.append(e)}e.content=v||""};m("description",(d||"").slice(0,155));m("og:title",t,"property");m("og:description",(d||"").slice(0,155),"property");m("og:image",img,"property");let c=document.querySelector("link[rel=canonical]");if(!c){c=document.createElement("link");c.rel="canonical";document.head.append(c)}c.href=location.href}
+const slugify=s=>s.toLowerCase().trim().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const err=e=>({"permission-denied":"You don't have permission for this action.","unavailable":"Network problem. Check your connection.","unauthenticated":"Please sign in first."}[e.code?.split("/")[1]]||"Something went wrong. Please try again.");
+let user=null,isAdmin=false,cats=[],pdfs=[],cache=null,view="grid",settings={name:"PDF Library"};
+const ts=p=>p.createdAt?.seconds||0;
+async function loadCats(){try{cats=(await getDocs(collection(db,"categories"))).docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>(a.order||0)-(b.order||0))}catch(e){}}
+async function loadPdfs(force){if(cache&&!force)return cache;const q=isAdmin?collection(db,"pdfs"):query(collection(db,"pdfs"),where("published","==",true),limit(200));
+ cache=(await getDocs(q)).docs.map(d=>({id:d.id,...d.data()})).sort((a,b)=>ts(b)-ts(a));return cache}
+const catName=id=>cats.find(c=>c.id===id)?.name||"General";
+const card=p=>`<article class="card"><a href="#/pdf/${esc(p.slug)}" class="cov" style="${p.coverUrl?`background-image:url('${esc(p.coverUrl)}')`:""}" aria-label="${esc(p.title)}" >${p.coverUrl?"":esc(p.title)}</a><div class="b"><h3>${esc(p.title)}</h3><div class="mu">${esc(p.author)} · ${esc(catName(p.categoryId))} · ${esc(p.language)}</div><div class="mu">${esc((p.description||"").slice(0,80))}</div><div class="row"><a class="btn s" href="#/read/${esc(p.slug)}">Read</a><a class="btn s o" href="#/pdf/${esc(p.slug)}">Details</a></div></div></article>`;
+const empty=(t)=>`<div class="panel" style="text-align:center"><h3>${t}</h3><p class="mu">Try another search or category.</p></div>`;
+function shell(body){A.innerHTML=`<nav><a href="#/" class="logo"><i>P</i>${esc(settings.name).toUpperCase()}</a><div class="l"><a href="#/">Home</a><a href="#/library">Library</a><a href="#/library">Categories</a>${user?`<a href="#/account">Account</a>`:""}${isAdmin?`<a href="#/admin">Admin</a>`:""}</div><button class="btn s o" id="th" aria-label="Toggle dark mode">Dark / Light</button>${user?`<button class="btn s o" id="out">Sign out</button>`:`<button class="btn s" id="in">Sign in with Google</button>`}</nav><div class="wrap">${body}</div><footer><span class="serif" style="font-size:20px">${esc(settings.name)}</span><span>${esc(settings.footer||"Discover, read and download useful PDF resources.")} ${settings.email?" · "+esc(settings.email):""}</span></footer>`;
+ $("#th").onclick=()=>{const r=document.documentElement,d=(r.dataset.theme||(matchMedia("(prefers-color-scheme:dark)").matches?"dark":"light"))=="dark"?"light":"dark";r.dataset.theme=d;try{localStorage.setItem("th",d)}catch(e){}};
+ $("#in")?.addEventListener("click",()=>signInWithPopup(auth,new GoogleAuthProvider()).then(async r=>{await setDoc(doc(db,"users",r.user.uid),{name:r.user.displayName,email:r.user.email,photo:r.user.photoURL,lastLogin:serverTimestamp()},{merge:true})}).catch(e=>toast(err(e))));
+ $("#out")?.addEventListener("click",()=>signOut(auth))}
+async function home(){const list=await loadPdfs();const feat=list.filter(p=>p.featured),pop=[...list].sort((a,b)=>(b.downloadCount||0)-(a.downloadCount||0));
+ const cols=["#e9e6df","#d9a35a","#3d5a45","#b9483a","#7a8a6a"];
+ shell(`<section class="hero"><div><h1>Your Digital PDF Library<em>Read. Learn. Download.</em></h1><p>Discover, read and download useful PDF resources in one place.</p><p><a class="btn" href="#/library">Browse PDFs</a> <a class="btn o" href="#/library">Explore categories</a></p><div class="perks"><span><b>Free reading</b>No account needed</span><span><b>Instant download</b>Every PDF</span><span><b>Save favorites</b>With Google sign-in</span></div></div><div class="shelf" aria-hidden="true">${(list.length?list.slice(0,5):[{title:"Library"}]).map((p,i)=>`<div class="spine" style="height:${230+i%3*34}px;background:${cols[i%5]};color:${i%5==0?"#333":"#fff"}">${esc(p.title.slice(0,22))}</div>`).join("")}</div></section>
+ <section class="panel"><div class="sh"><h2>Browse by category</h2><a href="#/library">View all</a></div><div class="cats">${cats.length?cats.map(c=>`<a class="cat" href="#/library/${c.id}"><span>${esc(c.name[0])}</span>${esc(c.name)}</a>`).join(""):'<p class="mu">Categories appear here once the admin creates them.</p>'}</div></section>
+ <section class="banner"><div><h2>The whole library, free to read</h2><p>Open any title online or download it for later.</p></div><a class="btn" href="#/library">Explore library</a></section>
+ ${feat.length?`<div class="sh"><h2>Featured</h2></div><div class="grid">${feat.slice(0,6).map(card).join("")}</div>`:""}
+ <div class="sh" style="margin-top:26px"><h2>Latest PDFs</h2><a href="#/library">View all</a></div>${list.length?`<div class="grid">${list.slice(0,6).map(card).join("")}</div>`:empty("No PDFs yet")}
+ ${pop.length?`<div class="sh" style="margin-top:26px"><h2>Popular</h2></div><div class="grid">${pop.slice(0,6).map(card).join("")}</div>`:""}`)}
+async function library(cid){const list=await loadPdfs();shell(`<h1 style="font-size:44px;margin:20px 0">Library</h1><div class="tool"><input id="q" type="search" aria-label="Search PDFs" placeholder="Search title, author, tags, language"><select id="c" aria-label="Category"><option value="">All categories</option>${cats.map(c=>`<option value="${c.id}" ${c.id==cid?"selected":""}>${esc(c.name)}</option>`).join("")}</select><select id="s" aria-label="Sort"><option value="n">Newest</option><option value="p">Most downloaded</option><option value="a">Title A–Z</option></select><button class="btn s o" id="v">${view=="grid"?"List view":"Grid view"}</button></div><div id="res" class="${view}"></div><p id="pg" style="text-align:center"></p>`);
+ let page=1,per=12;const run=()=>{const q=$("#q").value.toLowerCase(),c=$("#c").value,s=$("#s").value;
+  let r=list.filter(p=>(!c||p.categoryId==c)&&(!q||[p.title,p.author,p.description,p.language,catName(p.categoryId),...(p.tags||[])].join(" ").toLowerCase().includes(q)));
+  r.sort(s=="p"?(a,b)=>(b.downloadCount||0)-(a.downloadCount||0):s=="a"?(a,b)=>a.title.localeCompare(b.title):(a,b)=>ts(b)-ts(a));
+  $("#res").innerHTML=r.length?`<div class="grid">${r.slice(0,page*per).map(card).join("")}</div>`:empty("No PDFs found");
+  $("#pg").innerHTML=r.length>page*per?`<button class="btn o" id="more">Load more (${r.length-page*per})</button>`:"";$("#more")?.addEventListener("click",()=>{page++;run()})};
+ ["#q","#c","#s"].forEach(i=>$(i).addEventListener("input",()=>{page=1;run()}));$("#v").addEventListener("click",()=>{view=view=="grid"?"list":"grid";library($("#c").value)});run()}
+async function getBySlug(slug){const l=await loadPdfs();return l.find(p=>p.slug===slug)}
+async function detail(slug){const p=await getBySlug(slug);if(!p)return shell(empty("This PDF isn't available"));document.title=p.title+" – "+settings.name;seo(p.title,p.description,p.coverUrl);
+ let fav=false;if(user)try{fav=(await getDoc(doc(db,"users",user.uid,"favorites",p.id))).exists()}catch(e){}
+ const rel=cache.filter(x=>x.id!==p.id&&x.categoryId===p.categoryId).slice(0,6);
+ shell(`<div class="detail" style="margin-top:30px"><div class="card"><div class="cov" style="${p.coverUrl?`background-image:url('${esc(p.coverUrl)}')`:""}">${p.coverUrl?"":esc(p.title)}</div></div><div><h1>${esc(p.title)}</h1><p class="mu">by ${esc(p.author)}</p><p style="line-height:1.7">${esc(p.description)}</p><p class="mu">${esc(catName(p.categoryId))} · ${esc(p.language)} ${p.year?"· "+esc(p.year):""} ${p.pageCount?"· "+esc(p.pageCount)+" pages":""} ${p.fileSize?"· "+(p.fileSize/1048576).toFixed(1)+" MB":""}</p><p class="mu">${(p.tags||[]).map(t=>"#"+esc(t)).join(" ")}</p><p><a class="btn" href="#/read/${esc(p.slug)}">Read PDF</a> <button class="btn o" id="dl">Download PDF</button> <button class="btn o" id="fv">${fav?"Remove favorite":"Add to favorites"}</button></p></div></div>${rel.length?`<div class="sh" style="margin-top:30px"><h2>Related PDFs</h2></div><div class="grid">${rel.map(card).join("")}</div>`:""}`);
+ $("#dl").onclick=async()=>{window.open(p.pdfUrl,"_blank");try{await updateDoc(doc(db,"pdfs",p.id),{downloadCount:increment(1)})}catch(e){}};
+ $("#fv").onclick=async()=>{if(!user)return toast("Sign in to save favorites.");const r=doc(db,"users",user.uid,"favorites",p.id);try{fav?await deleteDoc(r):await setDoc(r,{pdfId:p.id,slug:p.slug,addedAt:serverTimestamp()});fav=!fav;$("#fv").textContent=fav?"Remove favorite":"Add to favorites";toast(fav?"Added to favorites":"Removed")}catch(e){toast(err(e))}}}
+async function reader(slug){const p=await getBySlug(slug);if(!p)return shell(empty("This PDF isn't available"));
+ shell(`<div class="sh" style="margin-top:20px"><h2>${esc(p.title)}</h2><span><a class="btn s o" href="#/pdf/${esc(p.slug)}">Details</a> <a class="btn s" href="${esc(p.pdfUrl)}" target="_blank" rel="noopener">Open fullscreen / download</a></span></div><iframe src="${esc(p.pdfUrl)}" title="${esc(p.title)}"></iframe>`)}
+async function account(){if(!user)return shell(empty("Sign in to see your account"));let favs=[];try{const ids=(await getDocs(collection(db,"users",user.uid,"favorites"))).docs.map(d=>d.id);const l=await loadPdfs();favs=l.filter(p=>ids.includes(p.id))}catch(e){}
+ shell(`<h1 style="font-size:44px;margin:20px 0">Account</h1><div class="panel" style="display:flex;gap:16px;align-items:center"><img src="${esc(user.photoURL||"")}" alt="" width="64" height="64" style="border-radius:50%"><div><h3>${esc(user.displayName)}</h3><span class="mu">${esc(user.email)}</span></div></div><div class="sh"><h2>Favorites</h2></div>${favs.length?`<div class="grid">${favs.map(card).join("")}</div>`:empty("No favorites yet")}`)}
+async function admin(){if(!isAdmin)return shell(empty("Admins only"));const l=await loadPdfs(true);const dl=l.reduce((s,p)=>s+(p.downloadCount||0),0);
+ shell(`<h1 style="font-size:44px;margin:20px 0">Admin dashboard</h1><div class="stats"><div><b>${l.length}</b>Total PDFs</div><div><b>${l.filter(p=>p.published).length}</b>Published</div><div><b>${l.filter(p=>!p.published).length}</b>Drafts</div><div><b>${cats.length}</b>Categories</div><div><b>${dl}</b>Downloads</div><div><b>${(l.reduce((s,p)=>s+(p.fileSize||0),0)/1048576).toFixed(1)} MB</b>Storage used</div></div>
+ <div class="panel"><h2>Add PDF</h2><form class="form" id="f" style="margin-top:12px"><label>PDF file<input type="file" id="file" accept="application/pdf,.pdf" required></label><label>Title<input id="t" required></label><label>Description<textarea id="d" rows="3"></textarea></label><label>Author<input id="a"></label><label>Category<select id="cat" required><option value="">Choose…</option>${cats.map(c=>`<option value="${c.id}">${esc(c.name)}</option>`).join("")}</select></label><label>Language<input id="lang" value="English"></label><label>Tags (comma separated)<input id="tg"></label><label>Publication year<input id="y" type="number"></label><label>Page count<input id="pc" type="number"></label><label>Cover image (optional)<input type="file" id="cv" accept="image/*"></label><label><span><input type="checkbox" id="ft" style="width:auto"> Featured</span></label><label><span><input type="checkbox" id="pb" style="width:auto" checked> Published</span></label><progress id="pr" value="0" max="100" style="width:100%;display:none"></progress><button class="btn" id="go">Upload PDF</button></form></div>
+ <div class="panel"><h2>Categories</h2><div class="tool" style="margin-top:12px"><input id="nc" placeholder="New category name"><button class="btn s" id="addc">Add</button></div><table class="tbl">${cats.map(c=>`<tr><td>${esc(c.name)}</td><td><button class="btn s o" data-dc="${c.id}">Delete</button></td></tr>`).join("")}</table></div>
+ <div class="panel"><h2>Website settings</h2><form class="form" id="sf" style="margin-top:12px"><label>Website name<input id="sn" value="${esc(settings.name)}"></label><label>Description<input id="sd" value="${esc(settings.description||"")}"></label><label>Contact email<input id="se" value="${esc(settings.email||"")}"></label><label>Footer text<input id="sfo" value="${esc(settings.footer||"")}"></label><button class="btn">Save settings</button></form></div>
+ <div class="panel"><h2>PDF library</h2><div style="overflow:auto"><table class="tbl"><tr><th>Title</th><th>Status</th><th>Downloads</th><th></th></tr>${l.map(p=>`<tr><td>${esc(p.title)}</td><td>${p.published?"Published":"Draft"}</td><td>${p.downloadCount||0}</td><td style="white-space:nowrap"><button class="btn s o" data-pub="${p.id}">${p.published?"Unpublish":"Publish"}</button> <button class="btn s o" data-ft="${p.id}">${p.featured?"Unfeature":"Feature"}</button> <button class="btn s o" data-ed="${p.id}">Edit</button> <button class="btn s o" data-cp="${p.id}">Copy link</button> <button class="btn s" data-del="${p.id}">Delete</button></td></tr>`).join("")}</table></div></div>`);
+ $("#sf").onsubmit=async e=>{e.preventDefault();try{await setDoc(doc(db,"settings","site"),{name:$("#sn").value||"PDF Library",description:$("#sd").value,email:$("#se").value,footer:$("#sfo").value});settings={...settings,name:$("#sn").value||"PDF Library",description:$("#sd").value,email:$("#se").value,footer:$("#sfo").value};toast("Settings saved");admin()}catch(x){toast(err(x))}};
+ const by=id=>l.find(p=>p.id===id);
+ $("#addc").onclick=async()=>{const n=$("#nc").value.trim();if(!n)return;await addDoc(collection(db,"categories"),{name:n,order:cats.length});await loadCats();admin()};
+ document.querySelectorAll("[data-dc]").forEach(b=>b.onclick=async()=>{if(confirm("Delete this category?")){await deleteDoc(doc(db,"categories",b.dataset.dc));await loadCats();admin()}});
+ document.querySelectorAll("[data-pub]").forEach(b=>b.onclick=async()=>{await updateDoc(doc(db,"pdfs",b.dataset.pub),{published:!by(b.dataset.pub).published,updatedAt:serverTimestamp()});toast("Updated");admin()});
+ document.querySelectorAll("[data-ft]").forEach(b=>b.onclick=async()=>{await updateDoc(doc(db,"pdfs",b.dataset.ft),{featured:!by(b.dataset.ft).featured});admin()});
+ document.querySelectorAll("[data-ed]").forEach(b=>b.onclick=async()=>{const p=by(b.dataset.ed),t=prompt("Title",p.title);if(t===null)return;const a=prompt("Author",p.author||"");const d=prompt("Description",p.description||"");try{await updateDoc(doc(db,"pdfs",p.id),{title:t||p.title,author:a??p.author,description:d??p.description,updatedAt:serverTimestamp()});toast("Saved");admin()}catch(x){toast(err(x))}});
+ document.querySelectorAll("[data-cp]").forEach(b=>b.onclick=()=>{navigator.clipboard.writeText(by(b.dataset.cp).pdfUrl);toast("Link copied")});
+ document.querySelectorAll("[data-del]").forEach(b=>b.onclick=async()=>{const p=by(b.dataset.del);if(!confirm(`Delete "${p.title}" permanently?`))return;
+  try{await deleteObject(ref(st,`pdfs/${p.id}/document.pdf`)).catch(()=>{});if(p.coverUrl)await deleteObject(ref(st,`covers/${p.id}/cover`)).catch(()=>{});await deleteDoc(doc(db,"pdfs",p.id));toast("Deleted");admin()}catch(e){toast(err(e))}});
+ $("#f").onsubmit=async e=>{e.preventDefault();const f=$("#file").files[0];
+  if(!f||f.type!=="application/pdf"||!/\.pdf$/i.test(f.name))return toast("Please choose a valid PDF file.");
+  if(f.size>50*1048576)return toast("File is over the 50 MB limit.");
+  const cv=$("#cv").files[0],title=$("#t").value.trim(),id=doc(collection(db,"pdfs")).id;$("#go").disabled=true;$("#pr").style.display="block";
+  try{const up=(path,file)=>new Promise((res,rej)=>{const t=uploadBytesResumable(ref(st,path),file,{contentType:file.type});t.on("state_changed",s=>$("#pr").value=s.bytesTransferred/s.totalBytes*100,rej,async()=>res(await getDownloadURL(t.snapshot.ref)))});
+   const pdfUrl=await up(`pdfs/${id}/document.pdf`,f);const coverUrl=cv?await up(`covers/${id}/cover`,cv):"";
+   let slug=slugify(title)||id;if(l.some(p=>p.slug===slug))slug+="-"+id.slice(0,4);
+   await setDoc(doc(db,"pdfs",id),{title,slug,description:$("#d").value,author:$("#a").value,categoryId:$("#cat").value,language:$("#lang").value,tags:$("#tg").value.split(",").map(s=>s.trim()).filter(Boolean),year:$("#y").value,pageCount:+$("#pc").value||0,coverUrl,pdfUrl,fileSize:f.size,published:$("#pb").checked,featured:$("#ft").checked,downloadCount:0,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),createdBy:user.uid});
+   toast("Uploaded and saved");cache=null;admin()}catch(x){toast(err(x));$("#go").disabled=false}}}
+async function route(){const h=location.hash.slice(2).split("/");document.title=settings.name;A.innerHTML='<p style="padding:40px">Loading…</p>';
+ try{({"":home,library:()=>library(h[1]),pdf:()=>detail(h[1]),read:()=>reader(h[1]),account,admin})[h[0]]?.call()||home()}
+ catch(e){shell(empty("Couldn't load the library"));toast(err(e))}}
+onAuthStateChanged(auth,async u=>{user=u;isAdmin=false;cache=null;if(u)try{isAdmin=(await getDoc(doc(db,"admins",u.uid))).exists()}catch(e){}
+ try{const s=await getDoc(doc(db,"settings","site"));if(s.exists())settings={...settings,...s.data()}}catch(e){}
+ await loadCats();route()});
+addEventListener("hashchange",route);
+</script></body></html>
